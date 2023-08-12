@@ -1,63 +1,28 @@
-# Nuxt 3 Minimal Starter
+# 💥 Fortrez
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Our web application seamlessly blends the power of social engagement with the allure of tangible rewards. Users not only have the ability to interact with diverse posts spanning a variety of topics and categories but also stand a chance to earn exciting rewards as they engage, making every interaction more meaningful and delightful.
 
-## Setup
+## 📚 Features
 
-Make sure to install the dependencies:
+- User registration and login 🔐
+- Creating, editing, and deleting posts 📝
+- Viewing user profiles and their posts 👥
+- Simple and easy-to-use interface 💻
+- Users earn on interaction on each posts 🪙
 
-```bash
-# npm
-npm install
+## 📝 Todo
 
-# pnpm
-pnpm install
+[x] Landing Page
+[] Web Application
+[] Android Application
+[] IOS Application
 
-# yarn
-yarn install
-```
+## 🛠️ Built With
 
-## Development Server
+- [Nuxt.js](https://nuxtjs.org/) - The Intuitive Web Framework 🚀
+- [Vue.js](https://vuejs.org/) - The Progressive JavaScript Framework 💻
+- [TypeScript](https://www.typescriptlang.org/) - TypeScript is JavaScript with syntax for types. 💬
 
-Start the development server on `http://localhost:3000`:
+## 📜 License
 
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Fortrez is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT)
