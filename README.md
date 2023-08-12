@@ -12,10 +12,10 @@ Our web application seamlessly blends the power of social engagement with the al
 
 ## 📝 Todo
 
-[x] Landing Page
-[] Web Application
-[] Android Application
-[] IOS Application
+- [x] Landing Page
+- [ ] Web Application
+- [ ] Android Application
+- [ ] IOS Application
 
 ## 🛠️ Built With
 
