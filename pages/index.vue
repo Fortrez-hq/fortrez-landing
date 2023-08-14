@@ -1,5 +1,5 @@
 <template>
-  <div>Hello Fortrez</div>
+  <div class="bg-red">Hello Fortrez</div>
 </template>
 
 <script></script>
