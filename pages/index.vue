@@ -35,83 +35,26 @@
         </div>
       </div>
     </header>
-    <section class="bg-background-secondary">
-      <div
-        class="md:max-w-7xl xl:max-w-screen-2xl mx-auto grid grid-cols-12 gap-4 md:h-screen sm:h-full snap-start p-10"
-      >
-        <div
-          class="col-span-12 w-full h-full lg:col-span-6 md:col-span-6 sm:col-span-12"
-        >
-          <div
-            class="py-10 h-full flex flex-col gap-10 justify-center items-center"
-          >
-            <p
-              class="text-center text-5xl inline-block lg:w-4/6 md:w-full mx-auto"
-            >
-              Interact and Engages
-            </p>
-            <p
-              class="text-text-secondary text-base font-medium leading-normal text-center inline-block lg:w-full md:w-full mx-auto"
-            >
-              Express your thoughts, ideas, and opinions by liking, commenting,
-              and reposting content that resonates with you. Engage in
-              meaningful conversations, share valuable insights, and collaborate
-              with fellow enthusiasts to build a strong network within the
-              crypto community.
-            </p>
 
-            <NuxtLink
-              to="/white-paper"
-              class="text-center text-text-secondary text-xl font-normal px-7 py-2.5 rounded-full border border-accent-primary max-w-max"
-            >
-              Learn More
-            </NuxtLink>
-          </div>
-        </div>
-        <div
-          class="col-span-12 w-full lg:col-span-6 md:col-span-6 sm:col-span-12 h-full flex-col flex justify-center"
-        >
-          <div
-            class="py-10 h-auto mx-auto md:mx-0 md:ml-auto w-11/12 lg:w-[500px] md:w-auto sm:w-2/3"
-          >
-            <img
-              class="object-contain mx-auto md:mx-0 md:ml-auto"
-              src="/images/vector1.png"
-              alt="Food Image"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
+    <SectionImage title="Interact and Engages" :hasBackground="true">
+      <template #desc>
+        Express your thoughts, ideas, and opinions by liking, commenting, and
+        reposting content that resonates with you. Engage in meaningful
+        conversations, share valuable insights, and collaborate with fellow
+        enthusiasts to build a strong network within the crypto community.
+      </template>
+      <template #btn> Learn More </template>
+    </SectionImage>
 
-    <section>
-      <div class="flex justify-around items-center min-h-screen gap-10 p-40">
-        <div class="basis-1/2 justify-center items-center">
-          <div class="">
-            <img src="/images/vector2.png" alt="" class="mr-auto min-w-[70%]" />
-          </div>
-        </div>
-
-        <div class="justify-center items-center inline-flex basis-1/2">
-          <div class="self-stretch justify-start items-center inline-flex">
-            <div class="flex-col justify-start items-center gap-7 inline-flex">
-              <div class="text-center text-text-secondary text-5xl font-normal">
-                Earn and Get Rewarded
-              </div>
-              <div
-                class="text-center text-text-secondary text-base font-medium leading-normal"
-              >
-                Your engagement on our platform doesn't go unnoticed. As you
-                interact with other users' posts, you earn tokens as a token of
-                appreciation for your valuable contributions. The more you
-                engage, the more tokens you accumulate, unlocking exciting
-                benefits and exclusive opportunities within the platform.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <SectionImage title="Earn and Get Rewarded" :reverse="true">
+      <template #desc>
+        Express your thoughts, ideas, and opinions by liking, commenting, and
+        reposting content that resonates with you. Engage in meaningful
+        conversations, share valuable insights, and collaborate with fellow
+        enthusiasts to build a strong network within the crypto community.
+      </template>
+      <template #btn> Learn More </template>
+    </SectionImage>
 
     <section id="early-access" class="bg-background-secondary">
       <div class="">
@@ -134,7 +77,21 @@
             </div>
 
             <div class="flex">
-              <form action=""></form>
+              <form action="">
+                <div class="relative">
+                  <input
+                    class="relative border-4 focus:outline-none text-gray-900 caret-accent-primary border-accent-secondary rounded-full px-10 py-4"
+                    type="email"
+                    name="email"
+                    placeholder="Enter your Email"
+                  />
+                  <Button
+                    type="submit"
+                    class="absolute my-auto right-0 inset-y-0 text-center text-text-primary text-sm sm:max-lg:text-base lg:text-xl font-normal leading-loose px-3 md:px-8 bg-accent-primary hover:bg-accent-primary/90 rounded-full transition-colors duration-300"
+                    >Join Now</Button
+                  >
+                </div>
+              </form>
             </div>
           </div>
         </div>
