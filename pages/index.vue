@@ -85,11 +85,12 @@
                     name="email"
                     placeholder="Enter your Email"
                   />
-                  <Button
+                  <button
                     type="submit"
                     class="absolute my-auto right-0 inset-y-0 text-center text-text-primary text-sm sm:max-lg:text-base lg:text-xl font-normal leading-loose px-3 md:px-8 bg-accent-primary hover:bg-accent-primary/90 rounded-full transition-colors duration-300"
-                    >Join Now</Button
                   >
+                    Join Now
+                  </button>
                 </div>
               </form>
             </div>
