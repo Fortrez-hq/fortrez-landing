@@ -1,6 +1,7 @@
 <template>
-  <div class="flex flex-col snap-y overflow-y-auto relative">
-    <NavBar class="absolute min-w-full z-20" />
+  <div
+    class="relative snap-y snap-mandatory overflow-y-auto h-screen menu-scroll"
+  >
     <header
       class="relative bg-[url('/images/unblurred_logo.png')] bg-no-repeat bg-center h-screen snap-start"
     >

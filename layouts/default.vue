@@ -2,12 +2,13 @@
   <div
     class="flex min-h-screen flex-col gap-3 text-text-primary bg-background-primary"
   >
-    <main class="flex-1 snap-start">
-      <NuxtPage
-        class="snap-y snap-mandatory overflow-y-auto h-screen menu-scroll"
-      />
+    <main
+      class="flex-1 relative snap-y snap-mandatory overflow-y-auto h-screen menu-scroll"
+    >
+      <NavBar class="absolute min-w-full z-20" />
+      <NuxtPage />
+      <Footer />
     </main>
-    <Footer />
   </div>
 </template>
 
