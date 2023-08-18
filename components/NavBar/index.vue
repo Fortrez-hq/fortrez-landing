@@ -36,11 +36,11 @@
         class="col-span-2 sm:col-span-1 flex flex-col justify-center items-end grow"
       >
         <NuxtLink
-          to="/"
-          class="hidden md:block text-white text-opacity-90 text-base font-medium"
+          to="#early-access"
+          class="hidden md:block text-text-primary text-opacity-90 text-base font-medium"
         >
           <div
-            class="ml-auto max-w-max md:px-7 lg:px-8 py-2.5 rounded-3xl border border-accent-secondary justify-center items-center relative z-10 before:contents-[''] before:absolute before:top-0 before:bottom-0 before:right-0 before:left-0 before:bg-accent-primary before:-z-10 before:rounded-full before:scale-x-0 hover:before:scale-x-100 hover:text-text-secondary before:transition-transform before:duration-300 before:ease-in-out before:overflow-hidden"
+            class="ml-auto max-w-max md:px-7 lg:px-8 py-2.5 rounded-3xl border border-accent-secondary justify-center items-center relative z-10 before:contents-[''] before:absolute before:top-0 before:bottom-0 before:right-0 before:left-0 before:bg-accent-primary before:-z-10 before:rounded-full before:scale-x-0 hover:before:scale-x-100 hover:text-text-primary before:transition-transform before:duration-300 before:ease-in-out before:overflow-hidden"
           >
             Join Now
           </div>
@@ -54,7 +54,7 @@
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="w-6 h-6 text-white"
+              class="w-6 h-6 text-text-primary"
             >
               <path
                 stroke-linecap="round"
@@ -94,27 +94,19 @@
         >
           <NuxtLink
             to="/"
-            class="text-white/90 hover:text-white text-sm md:text-base whitespace-nowrap"
+            class="text-text-primary/90 hover:text-text-primary text-sm md:text-base whitespace-nowrap"
             >Home</NuxtLink
           >
           <NuxtLink
             to="/white-paper"
-            class="text-white/90 hover:text-white text-sm md:text-base whitespace-nowrap"
+            class="text-text-primary/90 hover:text-text-primary text-sm md:text-base whitespace-nowrap"
             >White Paper</NuxtLink
           >
           <NuxtLink
             to="/contact"
-            class="text-white/90 hover:text-white text-sm md:text-base whitespace-nowrap"
+            class="text-text-primary/90 hover:text-text-primary text-sm md:text-base whitespace-nowrap"
             >Contact</NuxtLink
           >
-          <div class="flex justify-center items-center">
-            <NuxtLink
-              to="/"
-              class="text-white text-opacity-90 font-medium mx-auto max-w-max px-4 py-2.5 rounded-3xl border border-accent-secondary gap-2.5"
-            >
-              Join Now
-            </NuxtLink>
-          </div>
         </div>
       </div>
     </transition>
