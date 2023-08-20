@@ -1,6 +1,6 @@
 <template>
-  <nav class="py-2 bg-black/20 md:bg-transparent">
-    <div class="grid grid-cols-6 w-5/6 md:w-full lg:w-5/6 mx-auto">
+  <nav class="p-4 bg-black/30 md:bg-transparent">
+    <div class="grid grid-cols-5 w-full lg:w-5/6 mx-auto">
       <div class="col-span-2 sm:col-span-1 flex">
         <NuxtLink to="/" class="flex max-w-max gap-2 text-2xl items-center"
           ><img src="/images/logo.png" alt="" />
@@ -10,7 +10,7 @@
         >
       </div>
 
-      <div class="col-span-2 sm:col-span-4 flex flex-col justify-center grow">
+      <div class="col-span-1 sm:col-span-3 flex flex-col justify-center grow">
         <div
           class="max-w-max mx-auto hidden justify-self-center md:justify-center bg-text-secondary bg-opacity-10 px-12 py-2.5 backdrop-blur-lg rounded-full gap-14 sm:hidden md:flex"
         >
@@ -35,19 +35,22 @@
       <div
         class="col-span-2 sm:col-span-1 flex flex-col justify-center items-end grow"
       >
-        <NuxtLink
-          to="#early-access"
-          class="hidden md:block text-text-primary text-opacity-90 text-base font-medium"
-        >
-          <div
-            class="ml-auto max-w-max md:px-7 lg:px-8 py-2.5 rounded-3xl border border-accent-secondary justify-center items-center relative z-10 before:contents-[''] before:absolute before:top-0 before:bottom-0 before:right-0 before:left-0 before:bg-accent-primary before:-z-10 before:rounded-full before:scale-x-0 hover:before:scale-x-100 hover:text-text-primary before:transition-transform before:duration-300 before:ease-in-out before:overflow-hidden"
-          >
-            Join Now
-          </div>
-        </NuxtLink>
-
+        <div class="md:flex hidden">
+          <ButtonOutline
+            @keyup.enter="handleScroll"
+            @click="handleScroll"
+            text="Join Now"
+          />
+        </div>
         <transition mode="out-in" name="menu">
-          <button class="md:hidden" @click="is_open = !is_open" v-if="!is_open">
+          <button
+            class="md:hidden"
+            @click="
+              is_open = !is_open;
+              $emit('state', is_open);
+            "
+            v-if="!is_open"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -66,7 +69,10 @@
 
           <button
             class="md:hidden"
-            @click="is_open = !is_open"
+            @click="
+              is_open = !is_open;
+              $emit('state', is_open);
+            "
             v-else-if="is_open"
           >
             <svg
@@ -115,6 +121,12 @@
 
 <script lang-="ts" setup>
 const is_open = ref(false);
+
+const handleScroll = () => {
+  document
+    .querySelector("#early-access")
+    .scrollIntoView({ behavior: "smooth" }, true);
+};
 </script>
 
 <style scoped>

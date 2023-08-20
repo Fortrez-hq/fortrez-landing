@@ -5,7 +5,7 @@
     <header
       class="relative bg-[url('/images/unblurred_logo.png')] bg-no-repeat bg-center h-screen snap-start"
     >
-      <Particle class="z-10 snap-start"></Particle>
+      <ParticleCirclelines class="z-10"></ParticleCirclelines>
       <div class="flex h-screen justify-center items-center">
         <div
           class="w-full md:w-3/4 h-5/6 md:h-2/3 mx-auto absolute bg-opacity-10 rounded-3xl sm:rounded-full shadow-[0px_0px_200px_50px_rgba(37,0,90,0.15)] blur-3xl backdrop-blur-none"
@@ -27,12 +27,12 @@
               with like-minded individuals while earning.
             </div>
             <div class="justify-center items-center gap-2.5 inline-flex">
-              <NuxtLink
-                to="/"
+              <button
+                @click="handleScroll"
                 class="text-center text-text-primary text-sm sm:max-lg:text-base lg:text-xl font-normal leading-loose px-5 md:px-10 py-2 bg-accent-primary hover:bg-accent-primary/90 rounded-full transition-colors duration-300"
               >
                 Pre-Register
-              </NuxtLink>
+              </button>
             </div>
           </div>
         </div>
@@ -44,6 +44,7 @@
       :hasBackground="true"
       image="vector1"
       class="snap=start"
+      buttonText="Learn More"
     >
       <template #desc>
         Express your thoughts, ideas, and opinions by liking, commenting, and
@@ -51,7 +52,6 @@
         conversations, share valuable insights, and collaborate with fellow
         enthusiasts to build a strong network within the crypto community.
       </template>
-      <template #btn> Learn More </template>
     </SectionImage>
 
     <SectionImage
@@ -60,6 +60,7 @@
       :hasBtn="true"
       image="vector2"
       :isMobileReverse="true"
+      buttonText="Learn More"
     >
       <template #desc>
         Express your thoughts, ideas, and opinions by liking, commenting, and
@@ -67,13 +68,13 @@
         conversations, share valuable insights, and collaborate with fellow
         enthusiasts to build a strong network within the crypto community.
       </template>
-      <template #btn-name> Learn More </template>
     </SectionImage>
 
     <section
       id="early-access"
       class="bg-background-secondary snap-start relative"
     >
+      <ParticleStar class="absolute z-10"> </ParticleStar>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="40"
@@ -159,7 +160,7 @@
       <div>
         <div class="flex justify-center items-center h-screen">
           <div
-            class="flex-col justify-start items-center gap-20 inline-flex p-10"
+            class="flex-col justify-start items-center gap-20 inline-flex p-5 z-20"
           >
             <div
               class="text-center text-text-primary text-4xl max-w-4xl font-normal"
@@ -203,9 +204,16 @@
         </div>
       </div>
     </section>
+    <Footer class="snap-start" />
   </div>
 </template>
 
-<script></script>
+<script setup>
+const handleScroll = () => {
+  document
+    .querySelector("#early-access")
+    .scrollIntoView({ behavior: "smooth" }, true);
+};
+</script>
 
 <style scoped></style>

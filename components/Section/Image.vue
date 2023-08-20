@@ -1,7 +1,7 @@
 <template>
   <section :class="{ 'bg-background-secondary': hasBackground }">
     <div
-      class="md:max-w-7xl xl:max-w-screen-2xl mx-auto grid grid-cols-12 gap-4 md:h-screen sm:h-full snap-start p-10"
+      class="md:max-w-7xl xl:max-w-screen-2xl mx-auto grid grid-cols-12 gap-4 md:h-screen sm:h-full snap-start p-5"
     >
       <div
         class="col-span-12 w-full h-full lg:col-span-6 md:col-span-6 sm:col-span-12"
@@ -26,9 +26,7 @@
             <slot name="desc" />
           </p>
 
-          <ButtonOutline #btn v-if="hasBtn"
-            ><slot name="btn-name" />
-          </ButtonOutline>
+          <ButtonOutline url="/white-paper" v-if="hasBtn" :text="buttonText" />
         </div>
       </div>
       <div
