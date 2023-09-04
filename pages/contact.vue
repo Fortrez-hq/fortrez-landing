@@ -19,12 +19,25 @@
             src="/images/vector4.svg"
             alt="Food Image"
           />
+          <ClientOnly>
+            <VueTyped
+              :strings="typedStrings"
+              :typeSpeed="50"
+              :backSpeed="30"
+              :loop="true"
+              @onComplete="handleComplete"
+            />
+          </ClientOnly>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const typedStrings = ["Hello, ^1000 I am Typed.js", "And I work with Vue 3!"];
 
-<style scoped></style>
+const handleComplete = () => {
+  console.log("Done");
+};
+</script>
