@@ -45,7 +45,7 @@
           <img
             class="object-contain mx-auto md:mx-0"
             :class="{ 'md:mr-auto': reverse, 'md:ml-auto': !reverse }"
-            :src="`/images/${image}.png`"
+            :src="`/images/${image}.svg`"
             alt="Food Image"
           />
         </div>

@@ -79,7 +79,7 @@ const particlesLoaded = async (container: Container) => {
             enable: true,
             area: 800,
           },
-          value: 3,
+          value: 1,
         },
         opacity: {
           value: 0.3,
@@ -88,8 +88,8 @@ const particlesLoaded = async (container: Container) => {
           type: 'star',
         },
         size: {
-          random: true,
-          value: 10,
+          random: false,
+          value: 5,
         },
       },
       detectRetina: true,

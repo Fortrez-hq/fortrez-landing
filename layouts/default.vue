@@ -2,7 +2,11 @@
   <div
     class="flex min-h-screen flex-col gap-3 text-text-primary bg-background-primary"
   >
-    <NavBar class="absolute min-w-full z-40" @state="blur_background" />
+    <NavBar
+      class="absolute min-w-full z-40"
+      :solid="is_solid"
+      @state="blur_background"
+    />
     <main
       class="flex-1 relative snap-y snap-mandatory overflow-y-auto h-screen menu-scroll"
     >
@@ -22,6 +26,7 @@ const handleScroll = () => {
     .querySelector("#early-access")
     .scrollIntoView({ behavior: "smooth" }, true);
 };
+
 const is_open = ref(false);
 
 const blur_background = (args) => {

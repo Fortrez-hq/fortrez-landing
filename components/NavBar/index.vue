@@ -3,7 +3,7 @@
     <div class="grid grid-cols-5 w-full lg:w-5/6 mx-auto">
       <div class="col-span-2 sm:col-span-1 flex">
         <NuxtLink to="/" class="flex max-w-max gap-2 text-2xl items-center"
-          ><img src="/images/logo.png" alt="" />
+          ><img src="/images/logo.svg" alt="" />
           <span class="text-text-primary text-3xl font-normal leading-10"
             >Fortrez</span
           ></NuxtLink
@@ -43,14 +43,7 @@
           />
         </div>
         <transition mode="out-in" name="menu">
-          <button
-            class="md:hidden"
-            @click="
-              is_open = !is_open;
-              $emit('state', is_open);
-            "
-            v-if="!is_open"
-          >
+          <button class="md:hidden" @click="is_open = !is_open" v-if="!is_open">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
