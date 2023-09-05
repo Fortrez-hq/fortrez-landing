@@ -2,6 +2,15 @@
   <div
     class="relative snap-y snap-mandatory overflow-y-auto h-screen menu-scroll"
   >
+    <NavBar
+      class="block md:hidden absolute min-w-full z-40"
+      @state="blur_background"
+    />
+    <div
+      :class="{
+        'backdrop-blur-none blur-sm fixed w-full h-full z-30 ': is_open,
+      }"
+    ></div>
     <header
       class="relative bg-[url('/images/unblurred_logo.png')] bg-no-repeat bg-center h-screen snap-start"
     >
@@ -44,6 +53,7 @@
       :hasBackground="true"
       image="vector1"
       class="snap=start"
+      :isMobileReverse="true"
       buttonText="Learn More"
     >
       <template #desc>
@@ -209,6 +219,12 @@
 </template>
 
 <script setup>
+const is_open = ref(false);
+
+const blur_background = (args) => {
+  is_open.value = args;
+};
+
 const handleScroll = () => {
   document
     .querySelector("#early-access")

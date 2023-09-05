@@ -89,7 +89,7 @@ const particlesLoaded = async (container: Container) => {
         },
         size: {
           random: true,
-          value: 3,
+          value: 5,
         },
       },
       detectRetina: true,
