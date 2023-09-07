@@ -1,14 +1,9 @@
 <template>
   <div class="h-screen">
-    <NavBar
-      class="block md:hidden absolute min-w-full z-40"
-      @state="blur_background"
-    />
-    <div
-      :class="{
-        'backdrop-blur-none blur-sm fixed w-full h-full z-30 ': is_open,
-      }"
-    ></div>
+    <NavBar class="block md:hidden absolute min-w-full z-40" @state="blur_background" />
+    <div :class="{
+      'backdrop-blur-none blur-sm fixed w-full h-full z-30 ': is_open,
+    }"></div>
 
     <div class="p-5">
       <div class="py-40 w-full lg:w-5/6 mx-auto">
@@ -24,42 +19,33 @@
               include:
             </p>
             <WhitepaperText title="Creating high-quality content">
-              <template #text
-                >One of the most significant challenges for content creators is
+              <template #text>One of the most significant challenges for content creators is
                 creating high-quality content that engages their audience.
                 Creating compelling and valuable content that stands out in a
                 crowded digital landscape requires time, effort, and
-                creativity.</template
-              >
+                creativity.</template>
             </WhitepaperText>
             <WhitepaperText title="Getting discovered">
-              <template #text
-                >Even if content creators create excellent content, it's
+              <template #text>Even if content creators create excellent content, it's
                 challenging to get discovered. With millions of pieces of
                 content being published every day, content creators must find
                 ways to get their content in front of their target
-                audience.</template
-              >
+                audience.</template>
             </WhitepaperText>
             <WhitepaperText title="Building an audience">
-              <template #text
-                >Building an audience is a long-term challenge for content
+              <template #text>Building an audience is a long-term challenge for content
                 creators. It takes time and effort to build a loyal following of
-                people who would regularly engage with your content.</template
-              >
+                people who would regularly engage with your content.</template>
             </WhitepaperText>
             <WhitepaperText title="Monetizing content">
-              <template #text
-                >Content creators face a significant challenge in monetizing
+              <template #text>Content creators face a significant challenge in monetizing
                 their content. Generating revenue from content can be extremely
                 difficult, and the monetization methods available to content
                 creators depend on their content type and the platform they
-                use.</template
-              >
+                use.</template>
             </WhitepaperText>
             <WhitepaperText title="Dealing with copyright issues">
-              <template #text
-                >Content creators must be careful not to infringe on copyright
+              <template #text>Content creators must be careful not to infringe on copyright
                 laws when creating content. They need to ensure that they have
                 the necessary licenses and permissions to use third-party
                 content and that their content does not violate any copyright
@@ -67,20 +53,16 @@
               </template>
             </WhitepaperText>
             <WhitepaperText title="Staying relevant">
-              <template #text
-                >Content creators need to stay relevant by adapting to changes
+              <template #text>Content creators need to stay relevant by adapting to changes
                 in their industry and audience preferences. They need to
                 continually learn and improve their skills to keep up with the
-                evolving digital landscape.</template
-              >
+                evolving digital landscape.</template>
             </WhitepaperText>
             <WhitepaperText title="Balancing quality and quantity">
-              <template #text
-                >Content creators must find the right balance between creating
+              <template #text>Content creators must find the right balance between creating
                 high-quality content and producing enough content to keep their
                 audience engaged and interested. This can be a difficult balance
-                to strike.</template
-              >
+                to strike.</template>
             </WhitepaperText>
           </div>
           <div class="flex flex-col text-text-secondary gap-5 text-lg">
@@ -162,9 +144,14 @@
 <script setup>
 const is_open = ref(false);
 
+
+
 const blur_background = (args) => {
   is_open.value = args;
 };
+definePageMeta({
+  layout: 'alternative'
+})
 </script>
 
 <style scoped></style>
