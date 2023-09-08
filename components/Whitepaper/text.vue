@@ -3,7 +3,9 @@
     <ul class="list-outside list-disc mx-5 marker:text-animation-primary">
       <li>
         <span class="text-text-primary">{{ title }}</span> :
-        <span><slot name="text" /></span>
+        <span>
+          <slot name="text" />
+        </span>
       </li>
     </ul>
   </div>

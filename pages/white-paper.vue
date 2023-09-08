@@ -11,7 +11,7 @@
           <div class="flex flex-col gap-10">
             <p class="text-3xl text-text-primary">Introduction</p>
           </div>
-          <div class="flex flex-col text-text-secondary gap-5 text-lg">
+          <div class="flex flex-col text-text-secondary gap-5 text-base md:text-lg">
             <p class="text-xl text-text-primary">Challenges</p>
             <p>
               Content creators face several challenges with putting out their
@@ -65,7 +65,7 @@
                 to strike.</template>
             </WhitepaperText>
           </div>
-          <div class="flex flex-col text-text-secondary gap-5 text-lg">
+          <div class="flex flex-col text-text-secondary gap-5 text-base md:text-lg">
             <p class="text-xl text-text-primary">Why Fortrez Solution</p>
             <p>
               Overall, content creation is a challenging and competitive field
@@ -109,7 +109,7 @@
               </template>
             </WhitepaperText>
           </div>
-          <div class="flex flex-col text-text-secondary gap-5 text-lg">
+          <div class="flex flex-col text-text-secondary gap-5 text-base md:text-lg">
             <p class="text-xl text-text-primary">Mechanism</p>
             <p>
               Every time a member’s post or comment is engaged, they receive

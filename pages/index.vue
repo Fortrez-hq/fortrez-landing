@@ -98,7 +98,7 @@
       <div>
         <div class="flex justify-center items-center h-screen">
           <div class="flex-col justify-start items-center gap-20 inline-flex p-5 z-20">
-            <div class="text-center text-text-primary text-4xl max-w-4xl font-normal">
+            <div class="text-center text-3xl md:text-5xl inline-block lg:w-5/6 md:w-full mx-auto">
               Join Now for Exclusive Access to Our Exciting Social Media
               Platform!
             </div>
@@ -117,10 +117,10 @@
                 <div class="relative max-w-lg mx-auto space-y-5">
                   <div class="flex relative justify-around">
                     <input v-model="email"
-                      class="relative peer border-4 focus:outline-none text-sm text-gray-900 caret-accent-primary border-accent-secondary rounded-full px-5 md:px-10 py-3.5 w-full"
+                      class="relative peer border-4 focus:outline-none text-sm text-gray-900 caret-accent-primary border-accent-secondary rounded-full px-5 md:px-10 py-2.5 w-full"
                       type="email" name="email" placeholder="Enter your Email" />
                     <button type="submit"
-                      class="peer-focus:opacity-0 md:peer-focus:opacity-100 transition-all absolute my-auto inset-y-2 right-2.5 text-sm md:text-base text-center text-text-primary font-medium px-5 md:px-8 bg-accent-secondary hover:bg-accent-secondary/90 rounded-full duration-300">
+                      class="peer-focus:opacity-0 md:peer-focus:opacity-100 transition-all absolute my-auto inset-y-2 right-2 text-sm md:text-base text-center text-text-primary font-medium px-5 md:px-8 bg-accent-secondary hover:bg-accent-secondary/90 rounded-full duration-300">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-6 h-6" v-if="sent">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
@@ -128,7 +128,7 @@
                       <span v-else>{{ loading ? 'Loading...' : 'Join Now' }}</span>
                     </button>
                   </div>
-                  <FormError  message="An Error Occured. Please Try Again"  v-if="displayError"/>
+                  <FormError message="An Error Occured. Please Try Again" v-if="displayError" />
                 </div>
               </form>
             </div>
