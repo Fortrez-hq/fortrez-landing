@@ -128,7 +128,7 @@
                       <span v-else>{{ loading ? 'Loading...' : 'Join Now' }}</span>
                     </button>
                   </div>
-                  <FormError :message="error" />
+                  <FormError  message="An Error Occured. Please Try Again"  v-if="displayError"/>
                 </div>
               </form>
             </div>
@@ -141,15 +141,16 @@
 </template>
 
 <script setup>
+const { waitList } = useRuntimeConfig().public
 const is_open = ref(false);
 
 const loading = ref(false)
 
-const url = 'https://script.google.com/macros/s/AKfycbz6Voiy2ULivOP9-CToTzwmFPTCvTneZxlh2YV2pYIBn-qCGAL0ZP-j9id-7unfLQk/exec'
-
 const sent = ref(false)
 
 const email = ref("")
+
+const displayError = ref(false)
 
 const blur_background = (args) => {
   is_open.value = args;
@@ -165,13 +166,15 @@ const handleScroll = () => {
 const handle_submit = async () => {
   if (!email.value) return
 
+  displayError.value = false
+
   loading.value = true
 
   const formData = new FormData()
 
   formData.append('Emails', email.value)
 
-  const { data, error } = await useFetch(url, {
+  const { error } = await useFetch(waitList, {
     method: "post",
     redirect: 'follow',
     body: formData,
@@ -180,7 +183,7 @@ const handle_submit = async () => {
   loading.value = false
 
   if (error.value) {
-    return console.log(error.value)
+    return displayError.value = true
   }
 
   sent.value = true
