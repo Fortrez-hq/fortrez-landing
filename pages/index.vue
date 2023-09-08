@@ -5,7 +5,9 @@
       'backdrop-blur-none blur-sm fixed w-full h-full z-30 ': is_open,
     }"></div>
     <header class="relative bg-[url('/images/unblurred_logo.png')] bg-no-repeat bg-center h-screen snap-start">
-      <ParticleCirclelines class="z-10"></ParticleCirclelines>
+      <div>
+        <ParticleCirclelines class="z-10"></ParticleCirclelines>
+      </div>
       <div class="flex h-screen justify-center items-center">
         <div
           class="w-full md:w-3/4 h-5/6 md:h-2/3 mx-auto absolute bg-opacity-10 rounded-3xl sm:rounded-full shadow-[0px_0px_200px_50px_rgba(37,0,90,0.15)] blur-3xl backdrop-blur-none">
@@ -44,15 +46,16 @@
     <SectionImage title="Earnings and Rewards" :reverse="true" :hasBtn="true" image="vector2" :isMobileReverse="true"
       buttonText="Learn More">
       <template #desc>
-        Express your thoughts, ideas, and opinions by liking, commenting, and
-        reposting content that resonates with you. Engage in meaningful
-        conversations, share valuable insights, and collaborate with fellow
-        enthusiasts to build a strong network within the crypto community.
+        Amplify your efforts, dedication, and participation by earning rewards and recognitions tailored for you. Delve
+        into opportunities, seize every challenge, and achieve significant milestones to reap rich dividends. With every
+        contribution, not only does your expertise grow, but so does your treasure.
       </template>
     </SectionImage>
 
     <section id="early-access" class="bg-background-secondary snap-start relative">
-      <ParticleStar class="absolute z-10"> </ParticleStar>
+      <div>
+        <ParticleStar class="absolute z-10"> </ParticleStar>
+      </div>
       <svg xmlns="http://www.w3.org/2000/svg" width="40" height="37" viewBox="0 0 40 37" fill="none"
         class="absolute top-[15%] left-3/4">
         <path
@@ -78,6 +81,7 @@
           </linearGradient>
         </defs>
       </svg>
+
       <svg xmlns="http://www.w3.org/2000/svg" width="40" height="37" viewBox="0 0 40 37" fill="none"
         class="absolute bottom-1/4 right-1/3">
         <path
@@ -90,6 +94,7 @@
           </linearGradient>
         </defs>
       </svg>
+
       <div>
         <div class="flex justify-center items-center h-screen">
           <div class="flex-col justify-start items-center gap-20 inline-flex p-5 z-20">
@@ -108,17 +113,22 @@
             </div>
 
             <div class="w-full">
-              <form action="">
-                <div class="relative max-w-lg mx-auto">
+              <form @submit.prevent="handle_submit">
+                <div class="relative max-w-lg mx-auto space-y-5">
                   <div class="flex relative justify-around">
-                    <input
+                    <input v-model="email"
                       class="relative peer border-4 focus:outline-none text-sm text-gray-900 caret-accent-primary border-accent-secondary rounded-full px-5 md:px-10 py-3.5 w-full"
                       type="email" name="email" placeholder="Enter your Email" />
                     <button type="submit"
                       class="peer-focus:opacity-0 md:peer-focus:opacity-100 transition-all absolute my-auto inset-y-2 right-2.5 text-sm md:text-base text-center text-text-primary font-medium px-5 md:px-8 bg-accent-secondary hover:bg-accent-secondary/90 rounded-full duration-300">
-                      Join Now
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6" v-if="sent">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                      </svg>
+                      <span v-else>{{ loading ? 'Loading...' : 'Join Now' }}</span>
                     </button>
                   </div>
+                  <FormError :message="error" />
                 </div>
               </form>
             </div>
@@ -133,6 +143,13 @@
 <script setup>
 const is_open = ref(false);
 
+const loading = ref(false)
+
+const url = 'https://script.google.com/macros/s/AKfycbz6Voiy2ULivOP9-CToTzwmFPTCvTneZxlh2YV2pYIBn-qCGAL0ZP-j9id-7unfLQk/exec'
+
+const sent = ref(false)
+
+const email = ref("")
 
 const blur_background = (args) => {
   is_open.value = args;
@@ -143,6 +160,35 @@ const handleScroll = () => {
     .querySelector("#early-access")
     .scrollIntoView({ behavior: "smooth" }, true);
 };
+
+
+const handle_submit = async () => {
+  if (!email.value) return
+
+  loading.value = true
+
+  const formData = new FormData()
+
+  formData.append('Emails', email.value)
+
+  const { data, error } = await useFetch(url, {
+    method: "post",
+    redirect: 'follow',
+    body: formData,
+  })
+
+  loading.value = false
+
+  if (error.value) {
+    return console.log(error.value)
+  }
+
+  sent.value = true
+
+  setTimeout(() => {
+    sent.value = false
+  }, 5000)
+}
 
 </script>
 
