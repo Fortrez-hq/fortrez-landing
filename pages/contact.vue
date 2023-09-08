@@ -32,7 +32,6 @@
 </template>
 
 <script setup>
-
 const typedStrings = [
   "Want to <span class='text-accent-primary font-bold'>^500 Connect...?</span>",
   "Want to <span class='text-accent-secondary font-bold'>^500 Interact...?</span>",
