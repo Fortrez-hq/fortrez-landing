@@ -16,10 +16,6 @@ const handleScroll = () => {
 
 const is_open = ref(false);
 
-const blur_background = (args) => {
-  is_open.value = args;
-};
-
 
 </script>
 <style>
