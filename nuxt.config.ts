@@ -2,6 +2,8 @@
 export default defineNuxtConfig({
   modules: [
     "@nuxtjs/tailwindcss",
+    '@nuxtjs/google-fonts',
+    '@tresjs/nuxt',
     [
       "nuxt-mail",
       {
@@ -35,6 +37,16 @@ export default defineNuxtConfig({
       ],
     },
   },
+  googleFonts: {
+    families: {
+      Lato: [100, 300, 400, 500, 700, 900],
+      Raleway: true,
+      Roboto: [100, 300, 400, 500, 700, 900],
+      Poppins: [100, 300, 400, 500, 700, 900],
+      Lora: true,
+       // ...other font families
+    }
+ },
   devtools: { enabled: true },
   runtimeConfig: {
     public: {

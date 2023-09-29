@@ -7,7 +7,7 @@
               src="/images/logo.png" alt="" />
             <span class="text-text-primary text-2xl md:text-3xl font-normal leading-10">Fortrez</span>
           </NuxtLink>
-          <p class="max-w-full md:max-w-lg text-justify md:text-left text-sm leading-5">
+          <p class="max-w-full md:max-w-lg text-justify md:text-left text-base leading-5">
             Fortrez is an innovative and immersive social media platform that
             redefines the way you engage, connect, and earn in the digital
             realm. Fusing the power of social media with the exciting world of

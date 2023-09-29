@@ -8,7 +8,7 @@ module.exports = {
         "accent-primary": "#ba0855",
         "accent-secondary": "#25005a",
         "text-primary": "#ffffff",
-        "text-secondary": "#bcbcbc",
+        "text-secondary": "#F1F1F1",
         "animation-primary": "#3b008e",
       },
     },

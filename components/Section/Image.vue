@@ -8,11 +8,11 @@
         'order-first': !isMobileReverse,
       }">
         <div class="h-full flex flex-col gap-10 md:justify-center items-center">
-          <p class="text-center text-3xl md:text-5xl inline-block lg:w-5/6 md:w-full mx-auto">
+          <p class="text-center text-4xl md:text-5xl inline-block lg:w-5/6 md:w-full mx-auto">
             {{ title }}
           </p>
           <p
-            class="text-text-secondary text-base font-medium leading-normal text-justify md:text-center inline-block lg:w-full md:w-full mx-auto">
+            class="text-text-secondary text-base md:text-lg  font-normal leading-normal text-justify md:text-center inline-block lg:w-full md:w-full mx-auto">
             <slot name="desc" />
           </p>
 
@@ -26,10 +26,11 @@
           'order-first': isMobileReverse,
           'order-last': !isMobileReverse,
         }">
-        <div class="h-auto mx-auto md:mx-0 w-8/12 lg:w-[500px] md:w-auto sm:w-2/3"
+        <div class="h-full w-full mx-auto md:mx-0 lg:w-[500px] md:w-auto sm:w-2/3"
           :class="{ 'md:mr-auto': reverse, 'md:ml-auto': !reverse }">
           <img class="object-contain mx-auto md:mx-0" :class="{ 'md:mr-auto': reverse, 'md:ml-auto': !reverse }"
-            :src="`/images/${image}.svg`" alt="Food Image" />
+            :src="`/images/${image}.png`" alt="Food Image" />
+          <!-- <slot name="model" /> -->
         </div>
       </div>
     </div>

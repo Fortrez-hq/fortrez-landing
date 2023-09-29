@@ -12,13 +12,13 @@
         <div
           class="max-w-max mx-auto hidden justify-self-center md:justify-center bg-text-secondary bg-opacity-10 px-12 py-2.5 backdrop-blur-lg rounded-full gap-14 sm:hidden md:flex">
           <NuxtLink to="/"
-            class=" text-text-secondary hover:text-text-primary text-sm md:text-base whitespace-nowrap duration-200 ease-in-out">
+            class=" text-text-primary hover:text-accent-primary text-sm md:text-base whitespace-nowrap duration-200 ease-in-out">
             Home</NuxtLink>
           <NuxtLink to="/white-paper"
-            class="text-text-secondary hover:text-text-primary text-sm md:text-base whitespace-nowrap duration-200 ease-in-out">
+            class="text-text-primary hover:text-accent-primary text-sm md:text-base whitespace-nowrap duration-200 ease-in-out">
             White Paper</NuxtLink>
           <NuxtLink to="/contact"
-            class="text-text-secondary hover:text-text-primary text-sm md:text-base whitespace-nowrap duration-200 ease-in-out">
+            class="text-text-primary hover:text-accent-primary text-sm md:text-base whitespace-nowrap duration-200 ease-in-out">
             Contact</NuxtLink>
         </div>
       </div>
@@ -81,10 +81,10 @@ const handleScroll = () => {
 </script>
 
 <style scoped>
-.router-link-active,
+/* .router-link-active,
 .router-link-exact-active {
-  color: white;
-}
+  color: rgb(188 188 188);
+} */
 
 .menu-enter-active {
   animation: scale-up-center 0.25s ease 0s 1 normal none;

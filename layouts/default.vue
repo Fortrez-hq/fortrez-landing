@@ -19,6 +19,11 @@ const is_open = ref(false);
 
 </script>
 <style>
+
+body{
+  font-family: "Lora", sans-serif;
+}
+
 #tsparticles {
   position: absolute;
   top: 0;

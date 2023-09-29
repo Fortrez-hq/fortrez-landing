@@ -14,11 +14,11 @@
         </div>
         <div class="justify-center items-center inline-flex z-20">
           <div class="self-stretch flex-col justify-start items-center gap-7 inline-flex px-2">
-            <div class="text-center text-text-primary text-3xl sm:text-5xl max-w-3xl font-semibold">
+            <div class="text-center text-text-primary text-3xl sm:text-5xl lg:text-6xl max-w-5xl font-semibold">
               Ignite Your Social Media Experience and Earn Rewards on our
               Innovative Platform!
             </div>
-            <div class="text-center text-text-secondary text-base max-w-md font-normal leading-normal">
+            <div class="text-center text-text-secondary text-base md:text-lg max-w-2xl font-medium leading-normal">
               Discover a revolutionary way to engage with the world; connecting
               with like-minded individuals while earning.
             </div>
@@ -41,6 +41,8 @@
         conversations, share valuable insights, and collaborate with fellow
         enthusiasts to build a strong network within the crypto community.
       </template>
+
+      
     </SectionImage>
 
     <SectionImage title="Earnings and Rewards" :reverse="true" :hasBtn="true" image="vector2" :isMobileReverse="true"
@@ -50,6 +52,8 @@
         into opportunities, seize every challenge, and achieve significant milestones to reap rich dividends. With every
         contribution, not only does your expertise grow, but so does your treasure.
       </template>
+
+      
     </SectionImage>
 
     <section id="early-access" class="bg-background-secondary snap-start relative">
@@ -98,11 +102,11 @@
       <div>
         <div class="flex justify-center items-center h-screen">
           <div class="flex-col justify-start items-center gap-20 inline-flex p-5 z-20">
-            <div class="text-center text-3xl md:text-5xl inline-block lg:w-5/6 md:w-full mx-auto">
+            <div class="text-center text-4xl md:text-5xl inline-block lg:w-5/6 md:w-full mx-auto">
               Join Now for Exclusive Access to Our Exciting Social Media
               Platform!
             </div>
-            <div class="text-justify md:text-center text-text-secondary text-base font-medium max-w-5xl">
+            <div class="text-justify md:text-center text-text-secondary text-base md:text-xl font-medium max-w-5xl">
               We're thrilled to announce the upcoming launch of our
               revolutionary social media platform that will transform the way
               you engage, connect, and earn in the digital world. Be among the
@@ -140,7 +144,7 @@
   </div>
 </template>
 
-<script setup>
+<script  setup>
 const { waitList } = useRuntimeConfig().public
 const is_open = ref(false);
 
@@ -157,9 +161,7 @@ const blur_background = (args) => {
 };
 
 const handleScroll = () => {
-  document
-    .querySelector("#early-access")
-    .scrollIntoView({ behavior: "smooth" }, true);
+  document.querySelector("#early-access").scrollIntoView({ behavior: "smooth" }, true);
 };
 
 
@@ -195,4 +197,6 @@ const handle_submit = async () => {
 
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>
