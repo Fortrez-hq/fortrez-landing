@@ -42,7 +42,7 @@ defineProps({
         <div class="h-auto w-full mx-auto md:mx-0 lg:w-[500px] md:w-auto sm:w-2/3"
           :class="{ 'md:mr-auto': reverse, 'md:ml-auto': !reverse }">
           <img class="mx-auto md:mx-0" :class="{ 'md:mr-auto': reverse, 'md:ml-auto': !reverse }"
-            :src="`/images/${image}.svg`"  alt="Food Image" />
+            :src="`/images/${image}.svg`"  alt="Section image" />
           <!-- <slot name="model" /> -->
         </div>
       </div>
