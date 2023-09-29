@@ -1,6 +1,6 @@
 <template>
-  <section :class="{ 'bg-background-secondary': hasBackground }">
-    <div class="md:max-w-7xl xl:max-w-screen-2xl mx-auto grid grid-cols-12 gap-4 h-screen snap-start px-5 py-10">
+  <section>
+    <div class="md:max-w-7xl xl:max-w-screen-2xl mx-auto grid grid-cols-12 gap-4 min-h-[60vh] max-h-screen  px-5 py-10">
       <div class="col-span-12 w-full h-full lg:col-span-6 md:col-span-6 sm:col-span-12" :class="{
         'md:order-first': !reverse,
         'md:order-last': reverse,
@@ -26,10 +26,10 @@
           'order-first': isMobileReverse,
           'order-last': !isMobileReverse,
         }">
-        <div class="h-full w-full mx-auto md:mx-0 lg:w-[500px] md:w-auto sm:w-2/3"
+        <div class="h-auto w-full mx-auto md:mx-0 lg:w-[500px] md:w-auto sm:w-2/3"
           :class="{ 'md:mr-auto': reverse, 'md:ml-auto': !reverse }">
-          <img class="object-contain mx-auto md:mx-0" :class="{ 'md:mr-auto': reverse, 'md:ml-auto': !reverse }"
-            :src="`/images/${image}.png`" alt="Food Image" />
+          <img class="mx-auto md:mx-0" :class="{ 'md:mr-auto': reverse, 'md:ml-auto': !reverse }"
+            :src="`/images/${image}.svg`" alt="Food Image" />
           <!-- <slot name="model" /> -->
         </div>
       </div>
@@ -43,7 +43,7 @@ defineProps({
   desc: String,
   buttonText: String,
   reverse: Boolean,
-  hasBackground: Boolean,
+  // hasBackground: Boolean,
   hasBtn: Boolean,
   isMobileReverse: Boolean,
   image: String,

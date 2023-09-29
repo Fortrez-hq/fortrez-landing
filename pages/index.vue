@@ -1,5 +1,5 @@
 <template>
-  <div class="relative snap-y snap-mandatory overflow-y-auto h-screen menu-scroll">
+  <div class="relative snap-y snap-proximity overflow-y-auto h-screen menu-scroll">
     <NavBar class="block md:hidden absolute min-w-full z-40 " @state="blur_background" />
     <div :class="{
       'backdrop-blur-none blur-sm fixed w-full h-full z-30 ': is_open,
@@ -33,28 +33,27 @@
       </div>
     </header>
 
-    <SectionImage title="Interact and Engage" :hasBackground="true" image="vector1" class="snap=start"
-      :isMobileReverse="true" buttonText="Learn More">
-      <template #desc>
-        Express your thoughts, ideas, and opinions by liking, commenting, and
-        reposting content that resonates with you. Engage in meaningful
-        conversations, share valuable insights, and collaborate with fellow
-        enthusiasts to build a strong network within the crypto community.
-      </template>
-
+    <div class="snap-start">
+      <SectionImage title="Interact and Engage" :hasBackground="true" image="vector1" class="snap=start"
+        :isMobileReverse="true" buttonText="Learn More">
+        <template #desc>
+          Express your thoughts, ideas, and opinions by liking, commenting, and
+          reposting content that resonates with you. Engage in meaningful
+          conversations, share valuable insights, and collaborate with fellow
+          enthusiasts to build a strong network within the crypto community.
+        </template>
       
-    </SectionImage>
-
-    <SectionImage title="Earnings and Rewards" :reverse="true" :hasBtn="true" image="vector2" :isMobileReverse="true"
-      buttonText="Learn More">
-      <template #desc>
-        Amplify your efforts, dedication, and participation by earning rewards and recognitions tailored for you. Delve
-        into opportunities, seize every challenge, and achieve significant milestones to reap rich dividends. With every
-        contribution, not only does your expertise grow, but so does your treasure.
-      </template>
-
+      </SectionImage>
+      <SectionImage title="Earnings and Rewards" :reverse="true" :hasBtn="true" image="vector2" :isMobileReverse="true"
+        buttonText="Learn More">
+        <template #desc>
+          Amplify your efforts, dedication, and participation by earning rewards and recognitions tailored for you. Delve
+          into opportunities, seize every challenge, and achieve significant milestones to reap rich dividends. With every
+          contribution, not only does your expertise grow, but so does your treasure.
+        </template>
       
-    </SectionImage>
+      </SectionImage>
+    </div>
 
     <section id="early-access" class="bg-background-secondary snap-start relative">
       <div>
@@ -145,6 +144,20 @@
 </template>
 
 <script  setup>
+
+//GSAP Animations
+
+
+// Blur and Scrolls
+const blur_background = (args) => {
+  is_open.value = args;
+};
+
+const handleScroll = () => {
+  document.querySelector("#early-access").scrollIntoView({ behavior: "smooth" }, true);
+};
+// Email configurations
+
 const { waitList } = useRuntimeConfig().public
 const is_open = ref(false);
 
@@ -156,13 +169,6 @@ const email = ref("")
 
 const displayError = ref(false)
 
-const blur_background = (args) => {
-  is_open.value = args;
-};
-
-const handleScroll = () => {
-  document.querySelector("#early-access").scrollIntoView({ behavior: "smooth" }, true);
-};
 
 
 const handle_submit = async () => {
