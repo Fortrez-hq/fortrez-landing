@@ -99,9 +99,9 @@ const displayError = ref(false)
 const handle_submit = async () => {
   if (!email.value) return
 
-  displayError.value = false
+  displayError.value = false;
 
-  loading.value = true
+  loading.value = true;
 
   const formData = new FormData()
 
