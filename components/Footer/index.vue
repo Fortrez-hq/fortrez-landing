@@ -4,7 +4,7 @@
       <div class="flex flex-wrap justify-between items-center md:items-start py-16 gap-10">
         <div class="flex flex-col gap-5 text-text-secondary w-full md:w-6/12">
           <NuxtLink to="/" class="flex max-w-max gap-2 text-2xl items-center"><img class="h-10 md:h-auto"
-              src="/images/logo.png" alt="" />
+              src="/images/logo.png" alt="logo" />
             <span class="text-text-primary text-2xl md:text-3xl font-normal leading-10">Fortrez</span>
           </NuxtLink>
           <p class="max-w-full md:max-w-lg text-justify md:text-left text-base leading-5">
