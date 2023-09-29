@@ -1,6 +1,136 @@
+<script lang="ts"  setup>
+import gsap from 'gsap';
+import ScrambleText from 'scramble-text';
+import SplitTextJS from 'split-text-js';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { onMounted, onUnmounted, ref } from 'vue';
+
+
+
+
+//GSAP Animations
+
+// onMounted(() => {
+  
+//   let tl = new gsap.timeline({defaults : {duration:1.5}});
+
+//   // Header Animation
+  
+//   tl.fromTo('nav', {yPercent: -100, opacity: 0},{yPercent: 0, opacity: 1 })
+//   tl.fromTo('.banner-text', {yPercent: -100, opacity: 0},{yPercent: 0, opacity: 1 })
+//   tl.fromTo('.description', {opacity: 0},{opacity: 1 })
+//   tl.fromTo('#register-button', {yPercent: 200, opacity: 0},{yPercent: 0, opacity: 1 })
+  
+//   // gsap.to('.col-2',{x:-100,scrollTrigger :{
+//   //   trigger : '.section-1',
+//   //   start : 'bottom bottom',
+//   //   end : 'top, 20%',
+//   //   scrub : 'true',
+//   //   markers :true
+//   // }
+//   // })
+
+
+
+
+//   // Join Now
+
+//   gsap.call(startSectionAnim(),{scrollTrigger :{
+//     trigger : '.section-1',
+//     start : 'center center',
+//     end : 'bottom, center',
+//     scrub : 'true',
+//     markers :true
+//   }
+//   })
+  
+  
+
+
+//   // Body Animation
+//   function startSectionAnim(){
+//     console.log("Running")
+//     let scatterText = new ScrambleText(document.querySelector('.desc-text'),{
+//        timeOffset : 10,
+//        chars: [
+//          '安','以','宇','衣','於',
+//          '加','幾','久','計','己',
+//          '左','之','寸','世','曽',
+//          '太','知','川','天','止',
+//          '奈','仁','奴','称','乃',
+//          // '波','比','不','部','保',
+//          // '末','美','武','女','毛',
+//          // '也','為','由','恵','与',
+//          // '良','利','留','礼','呂',
+//          // '和','遠','无'
+//        ],
+//      }).start().play();
+//   }
+
+  
+  
+// });
+
+
+
+// Blur and Scrolls
+const blur_background = (args) => {
+  is_open.value = args;
+};
+
+const handleScroll = () => {
+  document.querySelector("#early-access").scrollIntoView({ behavior: "smooth" }, true);
+};
+// Email configurations
+
+const { waitList } = useRuntimeConfig().public
+const is_open = ref(false);
+
+const loading = ref(false)
+
+const sent = ref(false)
+
+const email = ref("")
+
+const displayError = ref(false)
+
+
+
+const handle_submit = async () => {
+  if (!email.value) return
+
+  displayError.value = false
+
+  loading.value = true
+
+  const formData = new FormData()
+
+  formData.append('Emails', email.value)
+
+  const { error } = await useFetch(waitList, {
+    method: "post",
+    redirect: 'follow',
+    body: formData,
+  })
+
+  loading.value = false
+
+  if (error.value) {
+    return displayError.value = true
+  }
+
+  sent.value = true
+
+  setTimeout(() => {
+    sent.value = false
+  }, 5000)
+}
+
+</script>
+
 <template>
   <div class="relative snap-y snap-proximity overflow-y-auto h-screen menu-scroll">
-    <NavBar class="block md:hidden absolute min-w-full z-40 " @state="blur_background" />
+    <NavBar class="nav-bar block md:hidden absolute min-w-full z-40 " @state="blur_background" />
     <div :class="{
       'backdrop-blur-none blur-sm fixed w-full h-full z-30 ': is_open,
     }"></div>
@@ -14,16 +144,18 @@
         </div>
         <div class="justify-center items-center inline-flex z-20">
           <div class="self-stretch flex-col justify-start items-center gap-7 inline-flex px-2">
-            <div class="text-center text-text-primary text-3xl sm:text-5xl lg:text-6xl max-w-5xl font-semibold">
-              Ignite Your Social Media Experience and Earn Rewards on our
-              Innovative Platform!
-            </div>
-            <div class="text-center text-text-secondary text-base md:text-lg max-w-2xl font-medium leading-normal">
+              <div class="m-0  text-center text-text-primary text-3xl sm:text-5xl lg:text-6xl max-w-5xl font-semibold">
+                  <div class="banner-text">
+                    Ignite Your Social Media Experience and Earn Rewards on our
+                    Innovative Platform!
+                  </div>
+              </div>
+            <div class="description text-center text-text-secondary text-base md:text-lg max-w-2xl font-medium leading-normal">
               Discover a revolutionary way to engage with the world; connecting
               with like-minded individuals while earning.
             </div>
             <div class="justify-center items-center gap-2.5 inline-flex">
-              <button @click="handleScroll"
+              <button @click="handleScroll" id="register-button"
                 class="text-center text-text-primary text-sm sm:max-lg:text-base lg:text-xl font-normal leading-loose px-5 md:px-10 py-2 bg-accent-primary hover:bg-accent-primary/90 rounded-full transition-colors duration-300">
                 Pre-Register
               </button>
@@ -143,65 +275,7 @@
   </div>
 </template>
 
-<script  setup>
 
-//GSAP Animations
-
-
-// Blur and Scrolls
-const blur_background = (args) => {
-  is_open.value = args;
-};
-
-const handleScroll = () => {
-  document.querySelector("#early-access").scrollIntoView({ behavior: "smooth" }, true);
-};
-// Email configurations
-
-const { waitList } = useRuntimeConfig().public
-const is_open = ref(false);
-
-const loading = ref(false)
-
-const sent = ref(false)
-
-const email = ref("")
-
-const displayError = ref(false)
-
-
-
-const handle_submit = async () => {
-  if (!email.value) return
-
-  displayError.value = false
-
-  loading.value = true
-
-  const formData = new FormData()
-
-  formData.append('Emails', email.value)
-
-  const { error } = await useFetch(waitList, {
-    method: "post",
-    redirect: 'follow',
-    body: formData,
-  })
-
-  loading.value = false
-
-  if (error.value) {
-    return displayError.value = true
-  }
-
-  sent.value = true
-
-  setTimeout(() => {
-    sent.value = false
-  }, 5000)
-}
-
-</script>
 
 <style scoped>
 
