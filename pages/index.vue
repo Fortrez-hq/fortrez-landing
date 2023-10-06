@@ -5,35 +5,28 @@ import SplitTextJS from 'split-text-js';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { onMounted, onUnmounted, ref } from 'vue';
 
+gsap.registerPlugin(ScrollTrigger);
+
 
 
 
 //GSAP Animations
 
-// onMounted(() => {
+onMounted(() => {
   
-//   let tl = new gsap.timeline({defaults : {duration:1.5}});
+  let tl_1 = new gsap.timeline({defaults : {duration:1}});
 
-//   // Header Animation
+
+//   Header Animation
   
-//   tl.fromTo('nav', {yPercent: -100, opacity: 0},{yPercent: 0, opacity: 1 })
-//   tl.fromTo('.banner-text', {yPercent: -100, opacity: 0},{yPercent: 0, opacity: 1 })
-//   tl.fromTo('.description', {opacity: 0},{opacity: 1 })
-//   tl.fromTo('#register-button', {yPercent: 200, opacity: 0},{yPercent: 0, opacity: 1 })
-  
-//   // gsap.to('.col-2',{x:-100,scrollTrigger :{
-//   //   trigger : '.section-1',
-//   //   start : 'bottom bottom',
-//   //   end : 'top, 20%',
-//   //   scrub : 'true',
-//   //   markers :true
-//   // }
-//   // })
+  tl_1.fromTo('nav', {yPercent: -100, opacity: 0},{yPercent: 0, opacity: 1 })
+  tl_1.fromTo('.banner-text', {yPercent: -100, opacity: 0},{yPercent: 0, opacity: 1 })
+  tl_1.fromTo('.description', {opacity: 0},{opacity: 1 })
+  tl_1.fromTo('#register-button', {yPercent: 200, opacity: 0},{yPercent: 0, opacity: 1 })
 
 
 
-
-//   // Join Now
+  // Join Now
 
 //   gsap.call(startSectionAnim(),{scrollTrigger :{
 //     trigger : '.section-1',
@@ -47,29 +40,45 @@ import { onMounted, onUnmounted, ref } from 'vue';
   
 
 
-//   // Body Animation
-//   function startSectionAnim(){
-//     console.log("Running")
-//     let scatterText = new ScrambleText(document.querySelector('.desc-text'),{
-//        timeOffset : 10,
-//        chars: [
-//          '安','以','宇','衣','於',
-//          '加','幾','久','計','己',
-//          '左','之','寸','世','曽',
-//          '太','知','川','天','止',
-//          '奈','仁','奴','称','乃',
-//          // '波','比','不','部','保',
-//          // '末','美','武','女','毛',
-//          // '也','為','由','恵','与',
-//          // '良','利','留','礼','呂',
-//          // '和','遠','无'
-//        ],
-//      }).start().play();
-//   }
+// Body Animation
 
+let tl_3 = new gsap.timeline({
+    scrollTrigger :{
+    trigger : '.join-text',
+    start : 'top center',
+    end : 'bottom center',
+    scrub : false,
+    markers :true,
+  }
+  });
+
+  tl_3.fromTo('.join-now',{scale: 0}, {scale:1})
+  tl_3.fromTo('.join-text',{opacity: 0}, {opacity:1})
+  tl_3.call(startSectionAnim)
+
+
+    let scatterText = new ScrambleText(document.querySelector('.join-text'),{
+       timeOffset : 5,
+       chars: [
+         '安','以','宇','衣','於',
+         '加','幾','久','計','己',
+         '左','之','寸','世','曽',
+         '太','知','川','天','止',
+         '奈','仁','奴','称','乃',
+         '波','比','不','部','保',
+         '末','美','武','女','毛',
+         '也','為','由','恵','与',
+         '良','利','留','礼','呂',
+         '和','遠','无'
+       ],
+     }).play();
   
+  function startSectionAnim(){
+    scatterText.start()
+    console.log("Running")
+  }
   
-// });
+});
 
 
 
@@ -129,7 +138,7 @@ const handle_submit = async () => {
 </script>
 
 <template>
-  <div class="relative snap-y snap-proximity overflow-y-auto h-screen menu-scroll">
+  <div class="relative snap-y snap-proximity overflow-y-auto h-auto menu-scroll">
     <NavBar class="nav-bar block md:hidden absolute min-w-full z-40 " @state="blur_background" />
     <div :class="{
       'backdrop-blur-none blur-sm fixed w-full h-full z-30 ': is_open,
@@ -165,8 +174,8 @@ const handle_submit = async () => {
       </div>
     </header>
 
-    <div class="snap-start">
-      <SectionImage title="Interact and Engage" :hasBackground="true" image="vector1" class="snap=start"
+    <div class="snap-start section">
+      <SectionImage title="Interact and Engage" :hasBackground="true" image="vector1" class="snap-start"
         :isMobileReverse="true" buttonText="Learn More">
         <template #desc>
           Express your thoughts, ideas, and opinions by liking, commenting, and
@@ -230,14 +239,14 @@ const handle_submit = async () => {
         </defs>
       </svg>
 
-      <div>
+      <div class="join-now">
         <div class="flex justify-center items-center h-screen">
           <div class="flex-col justify-start items-center gap-20 inline-flex p-5 z-20">
             <div class="text-center text-4xl md:text-5xl inline-block lg:w-5/6 md:w-full mx-auto">
               Join Now for Exclusive Access to Our Exciting Social Media
               Platform!
             </div>
-            <div class="text-justify md:text-center text-text-secondary text-base md:text-xl font-medium max-w-5xl">
+            <div class="join-text text-justify md:text-center text-text-secondary text-base md:text-xl font-medium max-w-5xl">
               We're thrilled to announce the upcoming launch of our
               revolutionary social media platform that will transform the way
               you engage, connect, and earn in the digital world. Be among the
@@ -278,5 +287,4 @@ const handle_submit = async () => {
 
 
 <style scoped>
-
 </style>

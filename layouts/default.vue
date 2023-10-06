@@ -51,8 +51,6 @@ body::-webkit-scrollbar {
 /* Hide scrollbar for IE, Edge and Firefox */
 .menu-scroll {
   -ms-overflow-style: none;
-  /* IE and Edge */
   scrollbar-width: none;
-  /* Firefox */
 }
 </style>

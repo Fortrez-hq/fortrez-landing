@@ -1,4 +1,40 @@
 <script lang="ts" setup>
+import gsap from 'gsap';
+import ScrambleText from 'scramble-text';
+import SplitTextJS from 'split-text-js';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { onMounted, onUnmounted, ref } from 'vue';
+
+gsap.registerPlugin(ScrollTrigger);
+
+onMounted(() => {
+  
+  let tl_2 = new gsap.timeline({
+    scrollTrigger :{
+    trigger : '.section',
+    start : 'top center',
+    end : 'bottom center',
+    scrub : false,
+    markers :true,
+    toggleActions: 'play reverse play reverse'
+  }
+  });
+
+  tl_2.to('.col-1',{x: 0, opacity: 1, duration: 1})
+  tl_2.to('.col-1',{opacity: 1, duration: 1})
+  tl_2.to('.col-2',{x: 0, opacity: 1, duration: 1})
+  tl_2.to('.col-1',{opacity: 1, duration: 1})
+
+
+
+ 
+
+  
+}
+)
+
+
+
 defineProps({
   title: String,
   desc: String,
@@ -11,11 +47,11 @@ defineProps({
 });
 </script>
 <template>
-  <section :class="{'bg-background-secondary' : hasBackground, 'section-2' : reverse, 'section-1' : !reverse}">
+  <section class=".section-1" :class="{'bg-background-secondary' : hasBackground}">
     <div class="relative md:max-w-7xl xl:max-w-screen-2xl mx-auto grid grid-cols-12 gap-4 min-h-[60vh] max-h-screen  px-5 py-10">
-      <div class="col-span-12 w-full h-full lg:col-span-6 md:col-span-6 sm:col-span-12" :class="{
-        'md:order-first col-1': !reverse,
-        'md:order-last col-2': reverse,
+      <div class="col-span-12 w-full h-full lg:col-span-6 md:col-span-6 sm:col-span-12 opacity-0" :class="{
+        'md:order-first col-1 translate-x-[-200%]': !reverse,
+        'md:order-last col-2 translate-x-[200%]': reverse,
         'order-last': isMobileReverse,
         'order-first': !isMobileReverse,
       }">
@@ -24,17 +60,17 @@ defineProps({
             {{ title }}
           </p>
           <p
-            class="desc-text text-text-secondary text-base md:text-lg  font-normal leading-normal text-justify md:text-center inline-block lg:w-full md:w-full mx-auto" :class="{'desc-1' : hasBackground,'desc-2' : !hasBackground}">
+            class=" desc-text text-text-secondary text-base md:text-lg  font-normal leading-normal text-justify md:text-center inline-block lg:w-full md:w-full mx-auto" :class="{'desc-1' : hasBackground,'desc-2' : !hasBackground}">
             <slot name="desc" />
           </p>
 
           <ButtonOutline url="/white-paper" v-if="hasBtn" :text="buttonText" />
         </div>
       </div>
-      <div class="col-span-12 w-full lg:col-span-6 md:col-span-6 sm:col-span-12 h-full flex-col flex justify-center"
+      <div class="col-span-12 w-full lg:col-span-6 md:col-span-6 sm:col-span-12 h-full flex-col flex justify-center opacity-0"
         :class="{
-          'md:order-first col-1 ': reverse,
-          'md:order-last col-2  ': !reverse,
+          'md:order-first col-1 translate-x-[-200%]': reverse,
+          'md:order-last col-2  translate-x-[200%]': !reverse,
           'order-first': isMobileReverse,
           'order-last': !isMobileReverse
 
