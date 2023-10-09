@@ -54,4 +54,7 @@ export default defineNuxtConfig({
       waitList: "",
     },
   },
+  build:{
+    transpile: ["gsap"]
+  }
 });

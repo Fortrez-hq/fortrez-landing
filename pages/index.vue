@@ -1,7 +1,7 @@
 <script lang="ts"  setup>
 import gsap from 'gsap';
 import ScrambleText from 'scramble-text';
-import SplitTextJS from 'split-text-js';
+// import SplitTextJS from 'split-text-js';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { onMounted, onUnmounted, ref } from 'vue';
 
@@ -14,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 onMounted(() => {
   
-  let tl_1 = new gsap.timeline({defaults : {duration:1}});
+  let tl_1 = gsap.timeline({defaults : {duration:1}});
 
 
 //   Header Animation
@@ -28,54 +28,40 @@ onMounted(() => {
 
   // Join Now
 
-//   gsap.call(startSectionAnim(),{scrollTrigger :{
-//     trigger : '.section-1',
-//     start : 'center center',
-//     end : 'bottom, center',
-//     scrub : 'true',
-//     markers :true
-//   }
-//   })
-  
-  
 
-
-// Body Animation
-
-let tl_3 = new gsap.timeline({
+  let tl_2 = gsap.timeline({
     scrollTrigger :{
-    trigger : '.join-text',
-    start : 'top center',
+    trigger : '.join-now',
+    start : 'top 80%',
     end : 'bottom center',
     scrub : false,
-    markers :true,
+    markers :false,
   }
   });
 
-  tl_3.fromTo('.join-now',{scale: 0}, {scale:1})
-  tl_3.fromTo('.join-text',{opacity: 0}, {opacity:1})
-  tl_3.call(startSectionAnim)
+  tl_2.fromTo('.join-now',{scale: 0}, {scale:1})
+  tl_2.fromTo('.join-text',{opacity: 0}, {opacity:1})
+  tl_2.call(startSectionAnim)
 
 
     let scatterText = new ScrambleText(document.querySelector('.join-text'),{
-       timeOffset : 5,
+       timeOffset : 4,
        chars: [
-         '安','以','宇','衣','於',
-         '加','幾','久','計','己',
-         '左','之','寸','世','曽',
-         '太','知','川','天','止',
-         '奈','仁','奴','称','乃',
-         '波','比','不','部','保',
-         '末','美','武','女','毛',
-         '也','為','由','恵','与',
-         '良','利','留','礼','呂',
-         '和','遠','无'
+         '|'
+        //  '加','幾','久','計','己',
+        //  '左','之','寸','世','曽',
+        //  '太','知','川','天','止',
+        //  '奈','仁','奴','称','乃',
+        //  '波','比','不','部','保',
+        //  '末','美','武','女','毛',
+        //  '也','為','由','恵','与',
+        //  '良','利','留','礼','呂',
+        //  '和','遠','无'
        ],
      }).play();
   
   function startSectionAnim(){
     scatterText.start()
-    console.log("Running")
   }
   
 });
@@ -83,13 +69,14 @@ let tl_3 = new gsap.timeline({
 
 
 // Blur and Scrolls
-const blur_background = (args) => {
-  is_open.value = args;
+const blur_background = (arg: boolean) => {
+  is_open.value = arg;
 };
 
 const handleScroll = () => {
-  document.querySelector("#early-access").scrollIntoView({ behavior: "smooth" }, true);
+  document.querySelector("#early-access")?.scrollIntoView({ behavior: "smooth" });
 };
+
 // Email configurations
 
 const { waitList } = useRuntimeConfig().public
@@ -174,7 +161,7 @@ const handle_submit = async () => {
       </div>
     </header>
 
-    <div class="snap-start section">
+    <div class="snap-start section w-screen overflow-x-hidden">
       <SectionImage title="Interact and Engage" :hasBackground="true" image="vector1" class="snap-start"
         :isMobileReverse="true" buttonText="Learn More">
         <template #desc>
@@ -197,9 +184,7 @@ const handle_submit = async () => {
     </div>
 
     <section id="early-access" class="bg-background-secondary snap-start relative">
-      <div>
-        <ParticleStar class="absolute z-10"> </ParticleStar>
-      </div>
+  
       <svg xmlns="http://www.w3.org/2000/svg" width="40" height="37" viewBox="0 0 40 37" fill="none"
         class="absolute top-[15%] left-3/4">
         <path
@@ -239,46 +224,45 @@ const handle_submit = async () => {
         </defs>
       </svg>
 
-      <div class="join-now">
-        <div class="flex justify-center items-center h-screen">
-          <div class="flex-col justify-start items-center gap-20 inline-flex p-5 z-20">
-            <div class="text-center text-4xl md:text-5xl inline-block lg:w-5/6 md:w-full mx-auto">
-              Join Now for Exclusive Access to Our Exciting Social Media
-              Platform!
-            </div>
-            <div class="join-text text-justify md:text-center text-text-secondary text-base md:text-xl font-medium max-w-5xl">
-              We're thrilled to announce the upcoming launch of our
-              revolutionary social media platform that will transform the way
-              you engage, connect, and earn in the digital world. Be among the
-              first to experience the power of our platform by joining our
-              exclusive pre-launch community. By submitting your email below,
-              you'll receive priority access and updates as we get closer to the
-              official launch.
-            </div>
-
-            <div class="w-full">
-              <form @submit.prevent="handle_submit">
-                <div class="relative max-w-lg mx-auto space-y-5">
-                  <div class="flex relative justify-around">
-                    <input v-model="email"
-                      class="relative peer border-4 focus:outline-none text-sm text-gray-900 caret-accent-primary border-accent-secondary rounded-full px-5 md:px-10 py-2.5 w-full"
-                      type="email" name="email" placeholder="Enter your Email" />
-                    <button type="submit"
-                      class="peer-focus:opacity-0 md:peer-focus:opacity-100 transition-all absolute my-auto inset-y-2 right-2 text-sm md:text-base text-center text-text-primary font-medium px-5 md:px-8 bg-accent-secondary hover:bg-accent-secondary/90 rounded-full duration-300">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-6 h-6" v-if="sent">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                      </svg>
-                      <span v-else>{{ loading ? 'Loading...' : 'Join Now' }}</span>
-                    </button>
+        <div class="join-now">
+          <div class="flex justify-center items-center h-screen">
+            <div class="flex-col justify-start items-center gap-20 inline-flex p-5 z-20">
+              <div class="text-center text-4xl md:text-5xl inline-block lg:w-5/6 md:w-full mx-auto">
+                Join Now for Exclusive Access to Our Exciting Social Media
+                Platform!
+              </div>
+              <div class="join-text text-justify md:text-center text-text-secondary text-base md:text-xl font-medium max-w-5xl">
+                We're thrilled to announce the upcoming launch of our
+                revolutionary social media platform that will transform the way
+                you engage, connect, and earn in the digital world. Be among the
+                first to experience the power of our platform by joining our
+                exclusive pre-launch community. By submitting your email below,
+                you'll receive priority access and updates as we get closer to the
+                official launch.
+              </div>
+              <div class="w-full">
+                <form @submit.prevent="handle_submit">
+                  <div class="relative max-w-lg mx-auto space-y-5">
+                    <div class="flex relative justify-around">
+                      <input v-model="email"
+                        class="relative peer border-4 focus:outline-none text-sm text-gray-900 caret-accent-primary border-accent-secondary rounded-full px-5 md:px-10 py-2.5 w-full"
+                        type="email" name="email" placeholder="Enter your Email" />
+                      <button type="submit"
+                        class="peer-focus:opacity-0 md:peer-focus:opacity-100 transition-all absolute my-auto inset-y-2 right-2 text-sm md:text-base text-center text-text-primary font-medium px-5 md:px-8 bg-accent-secondary hover:bg-accent-secondary/90 rounded-full duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                          stroke="currentColor" class="w-6 h-6" v-if="sent">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                        <span v-else>{{ loading ? 'Loading...' : 'Join Now' }}</span>
+                      </button>
+                    </div>
+                    <FormError message="An Error Occured. Please Try Again" v-if="displayError" />
                   </div>
-                  <FormError message="An Error Occured. Please Try Again" v-if="displayError" />
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
     </section>
     <Footer class="snap-start" />
   </div>
